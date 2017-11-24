@@ -5,22 +5,23 @@ const Content = (props) => {
     return (
         <div className='cards'>
             {
-                props.getSheet("Feuille 1")
+                props.getSheet("Identity")
                     .map((row, i) => (
-                        <div className='playing-card identity'>
+                        <div className='playing-card identity' key={row[0] + i}>
+                            <img src={'../../img/identity.png'} alt=""/>
                             <h1>{row[0]}</h1>
                             <h3>{row[1]}</h3>
                             <div className='fonts'>
                                 <h5>Fonts</h5>
-                                <p>{row[2]}</p>
-                                <p>{row[3]}</p>
+                                <h4 style={{fontFamily: row[2]}}>{row[2]}</h4>
+                                <h4 style={{fontFamily: row[3]}}>{row[3]}</h4>
                             </div>
                             <h5>Palette</h5>
                             <ul>
                                 {
                                     row[4].split(',')
                                     .map((color) => (
-                                        <li>
+                                        <li key={color}>
                                             <small>{color}</small> <b style={{height: '25px', backgroundColor: color}}></b>
                                         </li>
                                     ))
